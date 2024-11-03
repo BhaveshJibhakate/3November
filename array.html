@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .graph-bar {
+            display: block;
+            width: 30px; /* Fixed width for the bars */
+            background-color: rgb(238, 133, 133);
+            color: white;
+            text-align: center;
+            margin-bottom: 10px; /* Space between bars */
+        }
+
+        #graph {
+            display: flex;
+            gap: 10px; /* Gap between the bars */
+            align-items: flex-end; /* Align bars to the bottom */
+        }
+    </style>
+</head>
+<body>
+    <div class="maindiv">
+        <label>Enter till what value you want</label><input type="text" id="arrayvalue">
+        <div id="graphbar">
+
+        </div>
+    </div>
+    
+
+    <script>
+        let arr=[]
+        const textfield=document.getElementById("arrayvalue")
+        
+        textfield.addEventListener("input",()=>{
+            const textfieldval=parseInt(textfield.value)
+            arr=populatearray(textfieldval)
+            console.log(arr);
+            creategraph()
+            
+        })
+        
+        function populatearray(textfieldval)
+        {   let arr1=[]
+           for(let i=0;i<=textfieldval;i++)
+           {
+                 arr1[i]=i;
+                 
+                 
+           }return arr1;
+        }
+        function creategraph()
+        {
+          const graphi=document.getElementById("graph")
+          graphi.innerHTML=""
+
+          arr.forEach(num=>{
+             const div1=document.createElement("div")
+             div1.textContent=num
+             div1.style.height=`${num*10}px`
+             div1.classList.add("graphbar")
+             graphi.appendChild(div1)
+
+          })
+
+        }
+    </script>
+</body>
+</html>
